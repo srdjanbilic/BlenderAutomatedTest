@@ -9,8 +9,10 @@ class BlenderTesting < Minitest::Test
     @b.goto 'http://www.blender.org/' 
   end
 
-  def test_features_page  
+  def test_features_page
     @b.li(id: "menu-item-10").click
+    assert_equal(@b.title.lstrip, "Features - blender.org - Home of the Blender project - Free and Open 3D Creation Software")
+    assert_equal @b.url, "http://www.blender.org/features/"
     assert(@b.div(class: "header_static", index: 0).h1.text.include? "Features")
     
     assert(@b.div(class: "entry-content", index: 0).h3.text.include? "Blender is free and open source software, free to use for any purpose")
@@ -112,7 +114,6 @@ class BlenderTesting < Minitest::Test
     assert(@b.div(class: "span6", index: 15).ul.li(index: 2).text.include? "Full compositing with images and video files")
     assert(@b.div(class: "span6", index: 15).ul.li(index: 3).text.include? "Ability to render to multiLayer OpenEXR files")
     assert(@b.div(class: "span6", index: 15).ul.li(index: 4).text.include? "Multi-threaded")
-
      
     assert(@b.div(class: "span6", index: 16).h1.text.include? "Amazing Simulations")
     assert(@b.div(class: "span6", index: 16).p(index: 0).text.include? "Whether you need a crumbling building, rain, fire, smoke, fluid, cloth or full on destruction, Blender delivers great looking results.")
@@ -195,9 +196,10 @@ class BlenderTesting < Minitest::Test
     @b.li(class: "page_item page-item-2937").click
   end 
   
-  def test_download_page
-    assert(@b.li(id: "menu-item-125").exists?)
+  def test_download_page    
+    assert(@b.li(id: "menu-item-125").exists?)    
     @b.li(id: "menu-item-125").click
+    assert_equal(@b.title.lstrip, "Download - blender.org - Home of the Blender project - Free and Open 3D Creation Software")
     assert(@b.div(id:"windows").exists?)
     assert(@b.div(class: "carousel-caption bottom left", index: 0).h1.text.include? "Blender 2.70")
     #assert(@b.div(class: "introduction", index: 0).h1.text.include? "Download Blender 2.70a for Windows")
@@ -263,7 +265,13 @@ class BlenderTesting < Minitest::Test
     @b.li(class: "page_item page-item-157").click
     @b.div(class: "span12 sitemap", index: 0).li(index: 3).click    
      
- end
+  end
+  
+  def test_support_page
+    @b.li(id: 'menu-item-126').click
+    assert_equal(@b.title.lstrip, "Support - blender.org - Home of the Blender project - Free and Open 3D Creation Software")
+    assert_equal(@b.url, "http://www.blender.org/support/")
+  end
  
   def test_documentation_page
     @b.div(class: "span12 sitemap", index: 0).li(index: 3).click   
@@ -318,6 +326,7 @@ class BlenderTesting < Minitest::Test
   end  
   
   def teardown
+    @b.screenshot.save 'output.png' if !passed?
     @b.close
   end
 
