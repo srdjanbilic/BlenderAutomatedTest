@@ -4,7 +4,7 @@ require 'minitest/autorun'
 class MinitestHelper < Minitest::Test
   
   def setup
-    @browser = Watir::Browser.new
+    @browser = Watir::Browser.new :chrome
     @browser.window.resize_to(1024,800)
     @browser.goto 'http://www.blender.org/' 
   end
