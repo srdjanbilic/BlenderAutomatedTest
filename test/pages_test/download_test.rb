@@ -4,7 +4,7 @@ class DownloadTest < MinitestHelper
   
   
   def test_download
-    @browser.li(id: "menu-item-125").click
+    @browser.li(id: "menu-item-125").flash.click
     downloads = ['32bit', '64bit', 
                   'DE', 'NL 1', 'NL 2', 
                   'DE', 'NL 1', 'NL 2', 

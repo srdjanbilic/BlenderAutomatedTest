@@ -5,7 +5,7 @@ class Download1Test < MinitestHelper
 
   def test_download_page  
     assert(@browser.li(id: "menu-item-125").exists?)    
-    @browser.li(id: "menu-item-125").click
+    @browser.li(id: "menu-item-125").flash.click
     assert_equal(@browser.title.lstrip, "Download - blender.org - Home of the Blender project - Free and Open 3D Creation Software")
 	assert_equal(@browser.url, "http://www.blender.org/download/")
     assert(@browser.div(id:"windows").exists?)
@@ -66,11 +66,11 @@ class Download1Test < MinitestHelper
     @browser.div(class: "container download", index: 0).li(index: 4).click 
     
     assert(@browser.li(class: "page_item page-item-127").exists?)
-    @browser.li(class: "page_item page-item-127").click
+    @browser.li(class: "page_item page-item-127").flash.click
     assert(@browser.li(class: "page_item page-item-112").exists?)
-    @browser.li(class: "page_item page-item-112").click
+    @browser.li(class: "page_item page-item-112").flash.click
     assert(@browser.li(class: "page_item page-item-157").exists?)
-    @browser.li(class: "page_item page-item-157").click
+    @browser.li(class: "page_item page-item-157").flash.click
     @browser.div(class: "span12 sitemap", index: 0).li(index: 3).click    
      
   end

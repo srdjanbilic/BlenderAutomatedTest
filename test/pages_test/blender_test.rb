@@ -3,7 +3,7 @@ require_relative '../minitest_helper'
 class BlenderTesting < MinitestHelper
 
   def test_features_page
-    @browser.li(id: "menu-item-10").click
+    @browser.li(id: "menu-item-10").flash.click
     assert_equal(@browser.title.lstrip, "Features - blender.org - Home of the Blender project - Free and Open 3D Creation Software")
     assert_equal @browser.url, "http://www.blender.org/features/"
     assert(@browser.div(class: "header_static", index: 0).h1.text.include? "Features")
