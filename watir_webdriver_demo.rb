@@ -3,7 +3,7 @@ require 'minitest/autorun'
 
 class WatirWebdriverDemoPage < Minitest::Test
   def setup
-    @browser = Watir::Browser.new :chrome
+    @browser = Watir::Browser.new :firefox
     @browser.goto 'bit.ly/watir-webdriver-demo'
   end
   
