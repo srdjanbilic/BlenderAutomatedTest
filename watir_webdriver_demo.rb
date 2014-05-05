@@ -17,6 +17,13 @@ class WatirWebdriverDemoPage < Minitest::Test
     assert(radio.exists?)
     radio.set
     assert(radio.set?)
+    #@browser.button(:name => 'submit').click # Finish query
+    #@browser.label(:text => 'What is ruby?')
+    
+    checkboxes = @browser.label(text: 'What versions of ruby?').parent.checkbox(value: '1.9.2') 
+    assert(checkbox.exists?)
+    checkbox.set
+    assert(checkbox.set?)
     @browser.button(:name => 'submit').click # Finish query
     @browser.label(:text => 'What is ruby?')
     assert(@browser.text.include? 'Thank you')
