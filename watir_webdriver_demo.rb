@@ -10,20 +10,15 @@ class WatirWebdriverDemoPage < Minitest::Test
   def test_web_elements
     name = 'Srdjan Bilic'
     @browser.text_field(:id => 'entry_0').set name
-    #assert_equal(name, @browser.text_field(id: 'entry_0').text)
+    assert_equal(name, @browser.text_field(id: 'entry_0').value)
     @browser.select_list(:id => 'entry_1').select 'Ruby'
     assert(@browser.select_list(:id => 'entry_1').selected? 'Ruby')
     radio = @browser.label(text: 'What is ruby?').parent.radio(value: 'A programming language') 
     assert(radio.exists?)
     radio.set
     assert(radio.set?)
-    #@browser.button(:name => 'submit').click # Finish query
-    #@browser.label(:text => 'What is ruby?')
-    
-    checkboxes = @browser.label(text: 'What versions of ruby?').parent.checkbox(value: '1.9.2') 
-    assert(checkbox.exists?)
-    checkbox.set
-    assert(checkbox.set?)
+    @browser.checkbox(value: '1.9.2').set
+    @browser.checkbox(value: '1.8.7').set
     @browser.button(:name => 'submit').click # Finish query
     @browser.label(:text => 'What is ruby?')
     assert(@browser.text.include? 'Thank you')
