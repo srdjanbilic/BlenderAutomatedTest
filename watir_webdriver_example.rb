@@ -15,6 +15,34 @@ class WatirExampleTest < Minitest::Test
     assert(@browser.text_field(id: 'entry_0').value.include? user)
     @browser.text_field(id: 'entry_1').set "E moj #{user}, ima tu jos da se petlja, dechache!"
     assert(@browser.text_field(id: 'entry_1').value.include? user)
+    
+    radio = @browser.label(text: 'What testing tool do you like?').parent.radio(value: 'Watir') 
+    assert(radio.exists?)
+    radio.set
+    assert(radio.set?)
+    
+    
+    @browser.checkbox(value: 'Ruby').set
+    @browser.button(:name => 'submit').click 
+    @browser.label(:text => 'What language do you like?')
+    
+    
+    #@browser.select_list(:id => 'entry_6').select 'chrome'
+    #assert(@browser.select_list(:id => 'entry_6').selected? 'chrome')
+    #nece da prodje
+    
+  
+    #@browser.select_list(:name => 'entry.6.single').clear
+    #puts browser.select_list(:name => 'entry.6.single').options
+    #@browser.select_list(:name => 'entry.6.single').select 'Chrome'
+    #@browser.button(:name => 'submit').click
+  
+    #radio = @browser.label(text: 'How happy are you?').parent.radio(value: '1') 
+    #assert(radio.exists?)
+    #radio.set
+    #assert(radio.set?)
+    #ni ovo
+    
     sleep 10
   end
   
