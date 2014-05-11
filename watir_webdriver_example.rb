@@ -21,7 +21,7 @@ class WatirExampleTest < Minitest::Test
     assert(@browser.radio())
     
     (1..3).each do |number|
-      @browser.checkbox(id: 'groups_4_1').set
+      @browser.checkbox(id: 'group_4_1').set 
     end
     
     @browser.select_list(:id => 'entry_6').select 'Chrome' #Zar ne vidis da je veliko slovo?
@@ -30,9 +30,12 @@ class WatirExampleTest < Minitest::Test
     #nece da prodje => Oce, oce!
   
     @browser.radio(id: 'group_8_1').set
+         
+    @browser.radio(id: 'group_11_5').set
+    
+    @browser.radio(id: 'group_12_5').set
         
-    @browser.button(:name => 'submit').click
-        
+    @browser.button(:name => 'submit').click     
   end
   
   def teardown
