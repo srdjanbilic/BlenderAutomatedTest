@@ -37,13 +37,10 @@ class WatirExampleTest < Minitest::Test
     #@browser.select_list(:name => 'entry.6.single').select 'Chrome'
     #@browser.button(:name => 'submit').click
   
-    #radio = @browser.label(text: 'How happy are you?').parent.radio(value: '1') 
-    #assert(radio.exists?)
-    #radio.set
-    #assert(radio.set?)
-    #ni ovo
-    
-    sleep 10
+    @browser.radio(id: 'group_8_1').set
+        
+    @browser.button(:name => 'submit').click
+        
   end
   
   def teardown
