@@ -16,26 +16,18 @@ class WatirExampleTest < Minitest::Test
     @browser.text_field(id: 'entry_1').set "E moj #{user}, ima tu jos da se petlja, dechache!"
     assert(@browser.text_field(id: 'entry_1').value.include? user)
     
-    radio = @browser.label(text: 'What testing tool do you like?').parent.radio(value: 'Watir') 
-    assert(radio.exists?)
-    radio.set
-    assert(radio.set?)
+    @browser.radio(id: 'group_2_1').set
     
+    assert(@browser.radio())
     
-    @browser.checkbox(value: 'Ruby').set
-    @browser.button(:name => 'submit').click 
-    @browser.label(:text => 'What language do you like?')
+    (1..3).each do |number|
+      @browser.checkbox(id: 'groups_4_1').set
+    end
     
+    @browser.select_list(:id => 'entry_6').select 'Chrome' #Zar ne vidis da je veliko slovo?
     
-    #@browser.select_list(:id => 'entry_6').select 'chrome'
-    #assert(@browser.select_list(:id => 'entry_6').selected? 'chrome')
-    #nece da prodje
-    
-  
-    #@browser.select_list(:name => 'entry.6.single').clear
-    #puts browser.select_list(:name => 'entry.6.single').options
-    #@browser.select_list(:name => 'entry.6.single').select 'Chrome'
-    #@browser.button(:name => 'submit').click
+    assert(@browser.select_list(:id => 'entry_6').selected? 'Chrome')
+    #nece da prodje => Oce, oce!
   
     @browser.radio(id: 'group_8_1').set
         
