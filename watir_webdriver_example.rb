@@ -26,28 +26,17 @@ class WatirExampleTest < Minitest::Test
     @browser.button(:name => 'submit').click 
     @browser.label(:text => 'What language do you like?')
     
-    
-    #@browser.select_list(:id => 'entry_6').select 'chrome'
-    #assert(@browser.select_list(:id => 'entry_6').selected? 'chrome')
-    #nece da prodje
-    
-  
-    #@browser.select_list(:name => 'entry.6.single').clear
-    #puts browser.select_list(:name => 'entry.6.single').options
-    #@browser.select_list(:name => 'entry.6.single').select 'Chrome'
-    #@browser.button(:name => 'submit').click
-  
-    #radio = @browser.label(text: 'How happy are you?').parent.radio(value: '1') 
-    #assert(radio.exists?)
-    #radio.set
-    #assert(radio.set?)
-    #ni ovo
+    #@browser.select(:id => 'entry_6').clear
+    #puts @browser.select(:id => 'entry_6').option
+    #@browser.select(:id => 'entry_6').select 'Chrome'
+    #neznam probao sam sve i selt_list,label.... Aj vidi keve ti mozes da mi napises za celu stranu
+    #pa mi zadaj nesto drugo da radim a ovo da naucim. ili kako zelis.
     
     sleep 10
   end
   
-  def teardown
-    @browser.close
-  end
+    def teardown
+     @browser.close
+    end
   
 end
