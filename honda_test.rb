@@ -14,7 +14,9 @@ class WatirExampleTest < Minitest::Test
     assert(@browser.div(id: 'MotocikliMenu').exists?)
     @browser.div(id: 'MotocikliMenu').hover
     @browser.link(text: 'Super Sport').flash.click
-    #@browser.div(link: '/motocikli/super_sport/cbr1000rr_fireblade.238.html').click 
+    @browser.link(href: /cbr1000rr_fireblade.238/).flash.click
+    asssert(@browser.link(href: 'cbr1000rr_fireblade.238', class: 'selected').exists?)
+    @browser.link(href: /Specifikacije/).flash.click
     
   end
   
